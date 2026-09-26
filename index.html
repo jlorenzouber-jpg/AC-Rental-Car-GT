@@ -24,7 +24,53 @@
 .paymentPdfNote{font-size:7.5px;color:#536b7f;margin-top:8px;padding:6px 8px;background:#fff;border:1px dashed #b9d8ef;border-radius:7px;text-align:center}
 .paymentApp{margin-top:14px}
 @media(max-width:700px){.paymentPdfGrid{grid-template-columns:1fr}.paymentPdfGrid strong{font-size:13px}}
-@media print{.paymentPdf{box-shadow:none}.paymentPdfGrid{grid-template-columns:repeat(3,1fr)}.paymentApp{break-inside:avoid;page-break-inside:avoid}}
+@media print{
+@page{size:A4 portrait;margin:5mm}
+#cotizador{zoom:.60!important}
+#cotizador{transform-origin:top left!important}
+#cotizador .printBrand{margin-bottom:7px!important}
+#cotizador .printBrand img{width:48px!important;height:48px!important}
+#cotizador .printBrand strong{font-size:15px!important}
+#cotizador .printBrand span{font-size:8px!important}
+#cotizador .card{break-inside:avoid!important;page-break-inside:avoid!important}
+#cotizador .summary{break-inside:avoid!important;page-break-inside:avoid!important}
+#cotizador .vehicleGrid{gap:5px!important}
+#cotizador .vehicleCard{padding:6px!important}
+#cotizador .vehicleCard img{max-height:80px!important}
+#cotizador .input,.select{min-height:28px!important}
+#cotizador label{font-size:8px!important}
+#cotizador input,#cotizador select{font-size:9px!important;padding:5px 6px!important}
+#cotizador button{font-size:9px!important;padding:6px 8px!important}
+#cotizador .grid{gap:8px!important}
+#cotizador .card{padding:9px!important}
+#cotizador h2,#cotizador h3{margin-top:4px!important;margin-bottom:5px!important}
+#cotizador .row{gap:6px!important}
+#cotizador .field{margin-bottom:5px!important}
+#cotizador .line{padding:4px 0!important}
+#cotizador .total{padding-top:7px!important;margin-top:4px!important;font-size:18px!important}
+#cotizador .deposit{margin-top:7px!important;padding:7px!important}
+#cotizador .deposit strong{font-size:14px!important}
+#cotizador .small{font-size:8px!important;line-height:1.25!important}
+
+html,body{height:auto!important;min-height:0!important}
+body{margin:0!important}
+#cotizador{page-break-after:avoid!important}
+#cotizador *{orphans:1;widows:1}
+.app{max-width:none!important;width:100%!important}
+.paymentPdf{box-shadow:none;margin-top:4px!important;padding:5px 6px!important;border-radius:7px!important}
+.paymentPdfTitle{gap:7px;padding-bottom:5px}
+.paymentPdfTitle strong{font-size:9.5px}.paymentPdfTitle small{font-size:6.5px;margin-top:1px}
+.paymentPdfIcon{width:22px;height:22px;border-radius:6px;font-size:11px}
+.paymentPdfGrid{grid-template-columns:repeat(3,1fr)!important;gap:5px!important;margin-top:5px!important}
+.paymentPdfGrid>div{padding:4px 5px 5px;border-radius:5px}
+.paymentPdfGrid>div:before{height:2px}
+.paymentPdfGrid b{font-size:6.5px;padding-top:1px}
+.paymentPdfGrid>div:nth-child(2) b,.paymentPdfGrid>div:nth-child(3) b{font-size:6.5px}
+.paymentPdfGrid strong{font-size:9px;letter-spacing:.35px;margin-top:1px}
+.paymentPdfGrid span,.paymentPdfGrid span b{font-size:6px;line-height:1.15;margin-top:1px}
+.paymentPdfNote{font-size:6px;margin-top:5px;padding:4px 6px;border-radius:5px}
+.paymentApp{break-inside:avoid;page-break-inside:avoid}
+}
 </style></head><body><div class="app">
 <header class="top"><div class="brand"><img class="logo" src="ac-logo.png" alt="AC Rental Car GT"><div><div class="brandKicker">Sistema de gestión y cotizaciones</div><h1>AC Rental Car GT</h1><p>15 Calle B 7-44, Aurora 1, Zona 13, Ciudad de Guatemala · +502 3123-4517 · +502 3991-8915</p></div></div><div class="headerTools"><div class="cloudBadge" id="cloudStatus">Modo local</div><button class="btn configBtn noPrint" onclick="configurarNube()">⚙️ Nube</button><div class="quoteNo" id="quoteNo">COTIZACIÓN #000370</div></div></header><div class="printOnly printBrand"><img src="ac-logo.png" alt="AC Rental Car GT"><div><strong>AC Rental Car GT</strong><span>15 Calle B 7-44, Aurora 1, Zona 13, Ciudad de Guatemala · +502 3123-4517 · +502 3991-8915</span></div></div>
 <nav class="nav noPrint"><button class="active" onclick="show('cotizador',this)">Cotizador</button><button onclick="show('clientes',this)">Clientes</button><button onclick="show('vehiculos',this)">Vehículos</button><button onclick="show('historial',this)">Historial</button></nav>
@@ -32,7 +78,7 @@
 <div class="card"><h2>1. Datos del cliente</h2><div class="row"><div class="field"><label>Primer nombre</label><input id="nombre1"></div><div class="field"><label>Segundo nombre</label><input id="nombre2"></div></div><div class="row"><div class="field"><label>Primer apellido</label><input id="apellido1"></div><div class="field"><label>Segundo apellido</label><input id="apellido2"></div></div><div class="row"><div class="field"><label>WhatsApp / teléfono</label><div style="display:grid;grid-template-columns:minmax(150px,0.8fr) 1.5fr;gap:8px"><select id="paisTelefono" aria-label="Código de país"><option value="502">🇬🇹 Guatemala (+502)</option><option value="1">🇺🇸🇨🇦 Estados Unidos / Canadá (+1)</option><option value="52">🇲🇽 México (+52)</option><option value="503">🇸🇻 El Salvador (+503)</option><option value="504">🇭🇳 Honduras (+504)</option><option value="505">🇳🇮 Nicaragua (+505)</option><option value="506">🇨🇷 Costa Rica (+506)</option><option value="507">🇵🇦 Panamá (+507)</option><option value="34">🇪🇸 España (+34)</option><option value="44">🇬🇧 Reino Unido (+44)</option><option value="33">🇫🇷 Francia (+33)</option><option value="49">🇩🇪 Alemania (+49)</option><option value="39">🇮🇹 Italia (+39)</option><option value="55">🇧🇷 Brasil (+55)</option><option value="57">🇨🇴 Colombia (+57)</option><option value="54">🇦🇷 Argentina (+54)</option><option value="56">🇨🇱 Chile (+56)</option><option value="51">🇵🇪 Perú (+51)</option><option value="other">🌎 Otro país</option></select><input id="telefono" inputmode="tel" autocomplete="tel" placeholder="Número sin código de país"></div><div class="small" style="margin-top:5px">Seleccione el país del cliente. Si escribe el número completo con +código, se respetará sin agregar otro código.</div></div><div class="field"><label>Correo electrónico</label><input id="email"></div></div><div class="row"><div class="field"><label>Documento</label><input id="documento" placeholder="DPI / Pasaporte"></div><div class="field"><label>Licencia de conducir</label><input id="licencia"></div></div><button class="btn secondary noPrint" onclick="guardarCliente()">💾 Guardar cliente</button></div>
 <div class="card"><h2>2. Reserva</h2><div class="row"><div class="field"><label>Vehículo</label><select id="vehiculo" onchange="calcular()"></select></div><div class="field"><label>Tarifa por día</label><input id="tarifa" type="number" min="0" oninput="calcular()"><div class="small" id="tarifaBase"></div></div></div><div class="row"><div class="field"><label>Días</label><input id="dias" type="number" min="1" value="1" oninput="calcular()"></div><div class="field"><label>Estado de reserva</label><select id="estado"><option>Pre-reserva</option><option>Reservado</option><option>Confirmado</option></select></div></div><div class="row"><div class="field"><label>Fecha de entrega</label><input id="entregaFecha" type="date"></div><div class="field"><label>Hora de entrega</label><input id="entregaHora" type="time"></div></div><div class="row"><div class="field"><label>Fecha de devolución</label><input id="devolucionFecha" type="date"></div><div class="field"><label>Hora de devolución</label><input id="devolucionHora" type="time"></div></div></div>
 <div class="card"><h2>3. Extras y cargos</h2><div class="row"><div class="field"><label>Seguro / cobertura adicional</label><input id="seguro" type="number" min="0" value="0" oninput="calcular()"></div><div class="field"><label>Otros cargos</label><input id="otros" type="number" min="0" value="0" oninput="calcular()"></div></div><div class="row"><div class="field"><label>Descuento</label><input id="descuento" type="number" min="0" value="0" oninput="calcular()"></div><div class="field"><label>Depósito / garantía</label><input id="deposito" type="number" min="0" value="0" oninput="calcular()"></div></div></div>
-</main><aside class="summary"><div class="card"><div class="quote" id="summaryQuote">COTIZACIÓN #000370</div><h2 style="margin-top:8px">Resumen</h2><div class="line"><span>Alquiler</span><strong id="alquiler">Q0.00</strong></div><div class="line"><span>Seguro</span><strong id="seguroTxt">Q0.00</strong></div><div class="line"><span>Otros cargos</span><strong id="otrosTxt">Q0.00</strong></div><div class="line"><span>Descuento</span><strong id="descTxt">- Q0.00</strong></div><div class="total"><span>Total alquiler</span><span id="total">Q0.00</span></div><div class="deposit">💳 Depósito / garantía<strong id="depositoTxt">Q0.00</strong><span class="small">Se muestra por separado y no forma parte del total del alquiler.</span></div><div class="tools noPrint"><button class="btn primary" onclick="guardarCotizacion()">💾 Guardar cotización</button><button class="btn secondary" onclick="window.print()">📄 PDF / Imprimir</button></div><button class="btn secondary full noPrint" onclick="enviarWhatsApp()">📲 WhatsApp</button><button class="btn secondary full noPrint" onclick="abrirContrato()">📝 Convertir a contrato <span class="small">(opcional)</span></button><p class="small">Las fotos y datos del vehículo se consideran referencia. Condiciones finales sujetas al contrato de alquiler.</p><div class="paymentPdf paymentApp">
+</main><aside class="summary"><div class="card"><div class="quote" id="summaryQuote">COTIZACIÓN #000370</div><h2 style="margin-top:8px">Resumen</h2><div class="line"><span>Alquiler</span><strong id="alquiler">Q0.00</strong></div><div class="line"><span>Seguro</span><strong id="seguroTxt">Q0.00</strong></div><div class="line"><span>Otros cargos</span><strong id="otrosTxt">Q0.00</strong></div><div class="line"><span>Descuento</span><strong id="descTxt">- Q0.00</strong></div><div class="total"><span>Total alquiler</span><span id="total">Q0.00</span></div><div class="deposit">💳 Depósito / garantía<strong id="depositoTxt">Q0.00</strong><span class="small">Se muestra por separado y no forma parte del total del alquiler.</span></div><div class="tools noPrint"><button class="btn primary" onclick="guardarCotizacion()">💾 Guardar cotización</button><button class="btn secondary" onclick="imprimirCotizacion()">📄 PDF / Imprimir</button></div><button class="btn secondary full noPrint" onclick="enviarWhatsApp()">📲 WhatsApp</button><button class="btn secondary full noPrint" onclick="abrirContrato()">📝 Convertir a contrato <span class="small">(opcional)</span></button><p class="small">Las fotos y datos del vehículo se consideran referencia. Condiciones finales sujetas al contrato de alquiler.</p><div class="paymentPdf paymentApp">
   <div class="paymentPdfTitle">
     <span class="paymentPdfIcon">↔</span>
     <div>
@@ -142,6 +188,96 @@ function abrirContrato(){const c=dataCliente(),v=db.vehicles.find(x=>x.id==vehic
 function cerrarContrato(){document.getElementById('contractModal').classList.remove('open');document.getElementById('contractModal').setAttribute('aria-hidden','true')}
 function contratoData(){const ids=['apellido1','apellido2','nombre1','nombre2','nacionalidad','nacimiento','nit','telefono','trabajo','trabajo_ciudad','postal','trabajo_pais','direccion','ciudad','pais','email','documento','docpais','docvence','licencia','licpais','licvence','tipo','marca','modelo','color','linea','anio','vehiculo','km_salida','km_entrada','comb_salida','comb_entrada','conductor','sustituto','salida','devolucion','hora','tarifa','semana','mes','horas','dias','semanas','meses','codtarifa','ldw','pai','terceros','deducible','combustible','admin','danos','otros','deposito','cargos','total','pago','contrato','reserva','boleta','preparo','computo','observaciones'];const o={created:new Date().toISOString()};ids.forEach(k=>o[k]=document.getElementById('c_'+k)?.value||'');return o}
 function guardarContrato(){const d=contratoData();d.client=nombreCompleto(d);d.quote=currentQuoteNumber||db.nextQuote;db.contracts.unshift(d);save();toast('Contrato guardado correctamente.');}
+
+function imprimirCotizacion(){
+  const v=db.vehicles.find(x=>x.id==vehiculo.value)||{};
+  const c=dataCliente();
+  const n=currentQuoteNumber||db.nextQuote||1;
+  const num=String(n).padStart(6,'0');
+  const diasN=Math.max(1,+document.getElementById('dias').value||1);
+  const tarifaN=+document.getElementById('tarifa').value||0;
+  const segN=+document.getElementById('seguro').value||0;
+  const otrosN=+document.getElementById('otros').value||0;
+  const descN=+document.getElementById('descuento').value||0;
+  const depN=+document.getElementById('deposito').value||0;
+  const totalN=Math.max(0,tarifaN*diasN+segN+otrosN-descN);
+  const money=x=>'Q'+(Number(x)||0).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+  const dateFmt=x=>{if(!x)return '—';const d=new Date(x+'T12:00:00');return d.toLocaleDateString('es-GT',{day:'2-digit',month:'short',year:'numeric'}).replace('.','')};
+  const full=nombreCompleto(c)||'—';
+  const phone=(c.telefono||'').trim()||'—';
+  const entrega=(entregaFecha.value?dateFmt(entregaFecha.value):'—')+(entregaHora.value?' · '+entregaHora.value:'');
+  const devol=(devolucionFecha.value?dateFmt(devolucionFecha.value):'—')+(devolucionHora.value?' · '+devolucionHora.value:'');
+  const estadoTxt=estado.value||'Pre-reserva';
+  const w=window.open('','_blank');
+  if(!w){toast('Permití ventanas emergentes para imprimir.');return}
+  w.document.write(`<!doctype html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cotización #${num} · AC Rental Car GT</title>
+  <style>
+  @page{size:A4 portrait;margin:0}
+  html,body{width:100%;height:100%;min-height:0;overflow:hidden}
+  body{padding:0!important;margin:0!important}
+  .sheet{width:210mm;max-width:210mm;height:297mm;max-height:297mm;overflow:hidden;padding:5mm;box-sizing:border-box}
+  .section,.bottom,.terms,.footer{break-inside:avoid!important;page-break-inside:avoid!important}
+  .head{break-inside:avoid!important;page-break-inside:avoid!important}
+  *{box-sizing:border-box}html,body{margin:0;padding:0;background:#fff;color:#182a38;font-family:Arial,Helvetica,sans-serif}
+  body{font-size:9px;line-height:1.28}
+  .sheet{width:100%;max-width:194mm;margin:0 auto}
+  .head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 0 9px;border-bottom:3px solid #087fdb}
+  .brand{display:flex;align-items:center;gap:10px}.brand img{width:46px;height:46px;object-fit:contain}
+  .brand h1{font-size:16px;margin:0;color:#0b2234;letter-spacing:-.2px}.brand p{font-size:7.5px;color:#647789;margin:3px 0 0}
+  .quote{text-align:right}.quote b{display:block;font-size:14px;color:#075da5}.quote span{display:block;font-size:8px;color:#718292;margin-top:2px}
+  .section{margin-top:6px;border:1px solid #d9e5ee;border-radius:9px;overflow:hidden;background:#fff}
+  .sectionTitle{padding:5px 8px;background:linear-gradient(90deg,#eef7fd,#f9fcff);color:#075da5;font-weight:800;font-size:8px;letter-spacing:.5px;text-transform:uppercase;border-bottom:1px solid #dceaf3}
+  .two{display:grid;grid-template-columns:1fr 1fr}.cell{padding:5px 8px;border-right:1px solid #edf2f5}.cell:last-child{border-right:0}
+  .label{font-size:6.8px;text-transform:uppercase;color:#80909d;font-weight:700;letter-spacing:.3px}.value{font-size:9px;font-weight:700;color:#213645;margin-top:2px}
+  .vehicle{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:7px 10px}
+  .vehicleMain{display:flex;align-items:center;gap:9px}.carIcon{width:30px;height:30px;border-radius:8px;background:#087fdb;color:#fff;display:grid;place-items:center;font-size:15px}
+  .vehicleName{font-size:12px;font-weight:800;color:#142d40}.vehicleMeta{font-size:7.5px;color:#718292;margin-top:2px}
+  .rate{text-align:right}.rate b{display:block;font-size:13px;color:#087fdb}.rate span{font-size:7px;color:#748594}
+  .detail{padding:5px 8px}.line{display:flex;justify-content:space-between;align-items:center;padding:4px 1px;border-bottom:1px solid #edf1f4}.line:last-child{border-bottom:0}
+  .line span{color:#566a79}.line strong{color:#1c3141}.total{margin-top:5px;padding:7px 8px;border-radius:7px;background:#087fdb;color:#fff;display:flex;justify-content:space-between;align-items:center;font-size:10px;font-weight:800}.total strong{font-size:14px}
+  .bottom{display:grid;grid-template-columns:1fr 1.42fr;gap:7px;margin-top:6px}.deposit{border:1px solid #c8ddec;border-radius:9px;padding:8px;background:#f5faff}.deposit .label{color:#075da5}.deposit b{display:block;font-size:16px;color:#075da5;margin-top:2px}.deposit p{margin:3px 0 0;font-size:7px;color:#647789}
+  .pay{border:1px solid #c8ddec;border-radius:9px;padding:7px 8px;background:linear-gradient(135deg,#f4faff,#fff)}
+  .payHead{display:flex;align-items:center;gap:7px;color:#075da5;font-weight:800;font-size:8px}.payIcon{width:22px;height:22px;border-radius:6px;background:#087fdb;color:#fff;display:grid;place-items:center;font-weight:900}.paySub{font-size:6.7px;color:#718292;margin:2px 0 5px 29px}
+  .banks{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}.bank{background:#fff;border:1px solid #dce7ef;border-radius:6px;padding:5px 5px 4px;min-height:48px}.bank b{display:block;font-size:6.8px;color:#075da5}.bank strong{display:block;font-size:8.2px;color:#172d3e;margin-top:2px;letter-spacing:.3px}.bank span{display:block;font-size:5.8px;color:#718292;margin-top:2px;line-height:1.2}
+  .note{font-size:6.5px;color:#637686;text-align:center;margin-top:5px;padding-top:4px;border-top:1px dashed #cbdde9}
+  .terms{margin-top:5px;padding:6px 8px;background:#f7f9fb;border-radius:7px;color:#687b89;font-size:6.5px;line-height:1.35}.terms b{color:#3e5667}
+  .footer{display:flex;justify-content:space-between;gap:10px;margin-top:6px;padding-top:5px;border-top:1px solid #dce6ed;color:#788997;font-size:6.5px}.footer b{color:#526b7c}
+  @media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}.sheet{break-before:avoid!important;break-after:avoid!important;page-break-before:avoid!important;page-break-after:avoid!important;page-break-inside:avoid!important}}
+  </style></head><body><div class="sheet">
+  <header class="head"><div class="brand"><img src="${AC_LOGO_DATA}" alt="AC Rental Car GT"><div><h1>AC Rental Car GT</h1><p>15 Calle B 7-44, Aurora 1, Zona 13, Ciudad de Guatemala · +502 3123-4517 · +502 3991-8915</p></div></div>
+  <div class="quote"><b>COTIZACIÓN #${num}</b><span>${new Date().toLocaleDateString('es-GT',{day:'2-digit',month:'long',year:'numeric'})}</span></div></header>
+  <section class="section"><div class="sectionTitle">Cliente</div><div class="two">
+    <div class="cell"><div class="label">Nombre</div><div class="value">${esc(full)}</div></div>
+    <div class="cell"><div class="label">WhatsApp / teléfono</div><div class="value">${esc(phone)}</div></div>
+    <div class="cell"><div class="label">Correo electrónico</div><div class="value">${esc(c.email||'—')}</div></div>
+    <div class="cell"><div class="label">Documento</div><div class="value">${esc(c.documento||'—')}</div></div>
+  </div></section>
+  <section class="section"><div class="sectionTitle">Reserva</div><div class="two">
+    <div class="cell"><div class="label">Entrega</div><div class="value">${esc(entrega)}</div></div>
+    <div class="cell"><div class="label">Devolución</div><div class="value">${esc(devol)}</div></div>
+    <div class="cell"><div class="label">Duración</div><div class="value">${diasN} día(s)</div></div>
+    <div class="cell"><div class="label">Estado</div><div class="value">${esc(estadoTxt)}</div></div>
+  </div></section>
+  <section class="section"><div class="sectionTitle">Vehículo seleccionado</div><div class="vehicle"><div class="vehicleMain"><div class="carIcon">🚙</div><div><div class="vehicleName">${esc(v.name||'Vehículo')}</div><div class="vehicleMeta">Full equipo · Fotos y datos del vehículo son de referencia</div></div></div><div class="rate"><b>${money(tarifaN)}</b><span>por día</span></div></div></section>
+  <section class="section"><div class="sectionTitle">Detalle de la cotización</div><div class="detail">
+    <div class="line"><span>Alquiler · ${diasN} día(s) × ${money(tarifaN)}</span><strong>${money(tarifaN*diasN)}</strong></div>
+    <div class="line"><span>Seguro / cobertura adicional</span><strong>${money(segN)}</strong></div>
+    <div class="line"><span>Otros cargos</span><strong>${money(otrosN)}</strong></div>
+    <div class="line"><span>Descuento</span><strong>- ${money(descN)}</strong></div>
+    <div class="total"><span>TOTAL ALQUILER</span><strong>${money(totalN)}</strong></div>
+  </div></section>
+  <div class="bottom"><div class="deposit"><div class="label">Depósito / garantía</div><b>${money(depN)}</b><p>Se presenta por separado y <strong>no forma parte del total del alquiler.</strong></p></div>
+  <div class="pay"><div class="payHead"><span class="payIcon">↔</span>TRANSFERENCIAS BANCARIAS</div><div class="paySub">También podés realizar tu pago o reserva por transferencia</div><div class="banks">
+    <div class="bank"><b>Banco Industrial</b><strong>4580 1211 60</strong><span>Monetaria · AC RENTAL CAR GT</span></div>
+    <div class="bank"><b>Banco Banrural</b><strong>4219 0294 14</strong><span>Ahorro · JORGE MIGUEL GARCIA MOTTA</span></div>
+    <div class="bank"><b>BAC Credomatic</b><strong>975 730 342</strong><span>Ahorro · JORGE MIGUEL GARCIA MOTTA</span></div>
+  </div><div class="note">✓ Compartinos el comprobante después de realizar la transferencia.</div></div></div>
+  <div class="terms"><b>Condiciones:</b> Esta cotización es informativa y está sujeta a disponibilidad del vehículo y a la firma del contrato de alquiler. El depósito/garantía se muestra separado del total del alquiler. Las condiciones finales, coberturas, deducibles y cargos aplicables quedan establecidos en el contrato.</div>
+  <footer class="footer"><span><b>Cliente:</b> ${esc(full)}</span><span><b>AC Rental Car GT · Responsable</b></span></footer>
+  </div><script>window.onload=()=>setTimeout(()=>window.print(),250)<\/script></body></html>`);
+  w.document.close();
+}
+
 function imprimirContrato(){const d=contratoData();const w=window.open('','_blank');if(!w){toast('Permití ventanas emergentes para imprimir.');return}const sections=[['CONTROL',[['Número de contrato',d.contrato],['Número de reserva',d.reserva],['Forma de pago',d.pago],['Boleta / comprobante',d.boleta],['Preparó',d.preparo],['Computó',d.computo]]],['DATOS DEL CLIENTE',[['Nombre completo',nombreCompleto(d)],['Nacionalidad',d.nacionalidad],['Fecha de nacimiento',d.nacimiento],['NIT',d.nit],['Teléfono',d.telefono],['Correo',d.email],['Dirección de trabajo',d.trabajo],['Ciudad / Estado trabajo',d.trabajo_ciudad],['Código postal',d.postal],['País trabajo',d.trabajo_pais],['Dirección de residencia',d.direccion],['Ciudad residencia',d.ciudad],['País residencia',d.pais]]],['DOCUMENTOS',[['Pasaporte / DPI',d.documento],['País emisión documento',d.docpais],['Vencimiento documento',d.docvence],['Licencia de conducir',d.licencia],['País emisión licencia',d.licpais],['Vencimiento licencia',d.licvence]]],['VEHÍCULO',[['Tipo',d.tipo],['Marca',d.marca],['Modelo',d.modelo],['Año',d.anio],['Color',d.color],['Línea',d.linea],['Kilometraje salida',d.km_salida],['Kilometraje entrada',d.km_entrada],['Combustible salida',d.comb_salida],['Combustible entrada',d.comb_entrada],['Conductor adicional',d.conductor],['Vehículo sustituto',d.sustituto]]],['RENTA Y TARIFA',[['Salida',d.salida],['Devolución',d.devolucion],['Tarifa por hora',d.hora],['Tarifa diaria',d.tarifa],['Tarifa semanal',d.semana],['Tarifa mensual',d.mes],['Horas',d.horas],['Días',d.dias],['Semanas',d.semanas],['Meses',d.meses],['Código de tarifa',d.codtarifa]]],['CARGOS',[['LDW',d.ldw],['PAI',d.pai],['Seguro a terceros',d.terceros],['Deducible',d.deducible],['Combustible',d.combustible],['Gastos administrativos',d.admin],['Daños',d.danos],['Otros cargos',d.otros],['Depósito / garantía',d.deposito],['Total de cargos',d.cargos],['Total a pagar',d.total]]]];const html=sections.map(([title,items])=>`<h2>${esc(title)}</h2><div class="grid">${items.map(a=>`<div class="item"><div class="label">${esc(a[0])}</div><div class="value">${esc(a[1]||'—')}</div></div>`).join('')}</div>`).join('');w.document.write(`<html><head><title>Contrato ${esc(d.contrato||'AC Rental Car GT')}</title><style>body{font-family:Arial,sans-serif;color:#17323a;padding:28px;line-height:1.35}h1{font-size:22px;margin:0}h2{font-size:14px;border-bottom:1px solid #ccc;padding-bottom:5px;margin-top:22px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:7px 20px}.paymentPdf{margin-top:14px;padding:12px 13px;border:1px solid #b9d8ef;border-radius:13px;background:linear-gradient(135deg,#f4faff 0%,#e7f3ff 55%,#f8fcff 100%);break-inside:avoid;page-break-inside:avoid}.paymentPdfTitle{display:flex;align-items:center;gap:10px;color:#075da5;padding-bottom:8px;border-bottom:1px solid #d5e8f6}.paymentPdfTitle strong{display:block;font-size:12px;letter-spacing:.2px}.paymentPdfTitle small{display:block;font-size:8px;color:#62778a;margin-top:2px}.paymentPdfIcon{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#087fdb,#075da5);color:#fff;display:grid;place-items:center;font-weight:900;font-size:15px}.paymentPdfGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:9px}.paymentPdfGrid>div{position:relative;background:#fff;border:1px solid #d5e8f6;border-radius:9px;padding:8px 8px 9px;overflow:hidden;break-inside:avoid;page-break-inside:avoid}.paymentPdfGrid>div:before{content:"";display:block;height:3px;background:#087fdb;position:absolute;left:0;right:0;top:0}.paymentPdfGrid>div:nth-child(2):before{background:#13804a}.paymentPdfGrid>div:nth-child(3):before{background:#c71927}.paymentPdfGrid b{display:block;font-size:8.2px;color:#075da5;padding-top:2px}.paymentPdfGrid>div:nth-child(2) b{color:#13804a}.paymentPdfGrid>div:nth-child(3) b{color:#c71927}.paymentPdfGrid strong{display:block;font-size:12px;letter-spacing:.7px;margin-top:3px;color:#142433}.paymentPdfGrid span{display:block;font-size:7.5px;color:#657789;margin-top:3px;line-height:1.3}.paymentPdfGrid span b{display:inline;font-size:7.5px;color:#536b7f;padding:0}.paymentPdfNote{font-size:7.5px;color:#536b7f;margin-top:8px;padding:6px 8px;background:#fff;border:1px dashed #b9d8ef;border-radius:7px;text-align:center}.item{padding:6px 0;border-bottom:1px solid #eee}.label{font-size:9px;color:#68777c;text-transform:uppercase;font-weight:bold}.value{font-size:12px;min-height:15px}.obs{border:1px solid #ddd;min-height:70px;padding:10px}.sign{display:grid;grid-template-columns:1fr 1fr;gap:50px;margin-top:70px}.sig{border-top:1px solid #222;text-align:center;padding-top:8px;font-size:12px}@media print{body{padding:10mm}.grid{gap:5px 14px}}.appFooter{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:18px 8px 6px;color:#8190a0;font-size:11px}.printBrand{display:none;align-items:center;gap:12px;border-bottom:2px solid #087fdb;padding:0 0 10px;margin-bottom:14px}.printBrand img{width:62px;height:62px;object-fit:contain}.printBrand div{display:flex;flex-direction:column;gap:3px}.printBrand strong{font-size:18px;color:#08111f}.printBrand span{font-size:10px;color:#687586}@media print{.printBrand{display:flex}.appFooter{display:none!important}}@media(max-width:700px){.headerTools{width:100%;justify-content:flex-start}.brand{align-items:flex-start}.logo{width:68px;height:68px}.headerTools .configBtn{flex:1}.quoteNo{display:none}}</style></head><body><div style="display:flex;align-items:center;gap:12px;border-bottom:2px solid #087fdb;padding-bottom:10px;margin-bottom:12px"><img src="${AC_LOGO_DATA}" style="width:62px;height:62px;object-fit:contain"><div><h1 style="margin:0">AC Rental Car GT</h1><div style="font-size:10px;color:#687586">15 Calle B 7-44, Aurora 1, Zona 13, Ciudad de Guatemala · +502 3123-4517 · +502 3991-8915</div></div><h2>CONTRATO DE ALQUILER</h2>${html}<div class="paymentPdf">
 <div class="paymentPdfTitle"><span class="paymentPdfIcon">↔</span><div><strong>TRANSFERENCIAS BANCARIAS</strong><small>También podés realizar tu pago o reserva por transferencia</small></div></div>
 <div class="paymentPdfGrid">
