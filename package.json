@@ -1,0 +1,12 @@
+{
+  "name": "ac-rental-car-gt",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AC Rental Car GT web app",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
