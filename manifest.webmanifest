@@ -1,0 +1,19 @@
+{
+  "name": "AC Rental Car GT — Sistema de Gestión",
+  "short_name": "AC Rental Car GT",
+  "description": "Sistema de gestión y cotizaciones de AC Rental Car GT.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f5f8fc",
+  "theme_color": "#087fdb",
+  "icons": [
+    {
+      "src": "ac-logo.png",
+      "sizes": "1536x1536",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
